@@ -1,0 +1,47 @@
+# Docker
+/node_modules
+/vendor
+.env
+storage/logs/*.log
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+public/build
+bootstrap/cache/*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Git
+.git
+.gitignore
+.github
+
+# Tests
+tests
+phpunit.xml
+
+# Documentation (keep only essential ones)
+README.md
+SPEC.md
+TODO.md
+CHANGELOG.md
+
+# Docker files (prevent recursive mounting)
+docker-compose*.yml
+Dockerfile
+.dockerignore
+
+# Backup files
+*.sql
+*.backup
+*.tar.gz
+*.zip

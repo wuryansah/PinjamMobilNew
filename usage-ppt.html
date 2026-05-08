@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cara Penggunaan - Sistem Pinjam Mobil</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #1a1a2e; color: #333; }
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            padding: 40px 60px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            page-break-after: always;
+        }
+        .slide.active { display: flex; flex-direction: column; justify-content: center; }
+        .slide h1 { font-size: 3em; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .slide h2 { font-size: 2em; margin-bottom: 30px; color: #ffd700; }
+        .slide p { font-size: 1.4em; line-height: 1.8; margin-bottom: 15px; }
+        .slide ul { font-size: 1.3em; line-height: 2; margin-left: 40px; }
+        .slide li { margin-bottom: 15px; }
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 1.2em;
+            opacity: 0.7;
+        }
+        .title-slide { text-align: center; }
+        .title-slide h1 { font-size: 4em; }
+        .title-slide p { font-size: 1.5em; opacity: 0.9; }
+        .nav-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: flex;
+            gap: 10px;
+        }
+        .nav-buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #ffd700;
+            border: none;
+            border-radius: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+        .info-box {
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-left: 5px solid #ffd700;
+        }
+        .step-box {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide active title-slide">
+        <h1>CARA PENGGUNAAN</h1>
+        <h2>SISTEM PINJAM MOBIL</h2>
+        <p>Panduan lengkap penggunaan aplikasi</p>
+        <p style="margin-top: 40px; opacity: 0.8;">Presented by Developer Team</p>
+        <div class="slide-number">1 / 15</div>
+    </div>
+
+    <!-- Slide 2: Login - Admin -->
+    <div class="slide">
+        <h2>Akses Login sebagai ADMIN</h2>
+        <div class="step-box">
+            <ul>
+                <li>Buka halaman web: <strong>domain.com/login</strong></li>
+                <li>Masukkan email admin</li>
+                <li>Masukkan password</li>
+                <li>Klik tombol "Masuk Log"</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <p><strong>Halaman Dashboard Admin:</strong> Menu tambah kendaraan, kelola driver, setujui permintaan, laporan</p>
+        </div>
+        <div class="slide-number">2 / 15</div>
+    </div>
+
+    <!-- Slide 3: Login - Manager -->
+    <div class="slide">
+        <h2>Akses Login sebagai MANAGER</h2>
+        <div class="step-box">
+            <ul>
+                <li>Buka halaman login</li>
+                <li>Masukkan email manager</li>
+                <li>Masukkan password</li>
+                <li>Klik "Masuk"</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <p><strong>Halaman Dashboard Manager:</strong> Melihat dan menyetujui permintaan bawahannya</p>
+        </div>
+        <div class="slide-number">3 / 15</div>
+    </div>
+
+    <!-- Slide 4: Login - Driver -->
+    <div class="slide">
+        <h2>Akses Login sebagai DRIVER</h2>
+        <div class="step-box">
+            <ul>
+                <li>Buka halaman login</li>
+                <li>Masukkan email driver</li>
+                <li>Masukkan password</li>
+                <li>Klik "Masuk"</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <p><strong>Halaman Dashboard Driver:</strong> Melihat trip yang ditugaskan, mulai/selesaikan perjalanan</p>
+        </div>
+        <div class="slide-number">4 / 15</div>
+    </div>
+
+    <!-- Slide 5: Login - Karyawan -->
+    <div class="slide">
+        <h2>Akses Login sebagai KARYAWAN</h2>
+        <div class="step-box">
+            <ul>
+                <li>Buka halaman login</li>
+                <li>Masukkan email karyawan</li>
+                <li>Masukkan password</li>
+                <li>Klik "Masuk"</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <p><strong>Halaman Dashboard Karyawan:</strong> Membuat dan melihat status permintaan kendaraan</p>
+        </div>
+        <div class="slide-number">5 / 15</div>
+    </div>
+
+    <!-- Slide 6: Tambah Kendaraan (Admin) -->
+    <div class="slide">
+        <h2>Cara Menambah Kendaraan (Admin)</h2>
+        <div class="step-box">
+            <ol>
+                <li>Klik menu <strong>"Kendaraan"</strong> di sidebar</li>
+                <li>Klik tombol <strong>"+ Tambah"</strong></li>
+                <li>Isi data kendaraan:</li>
+                <ul>
+                    <li>Plat nomor</li>
+                    <li>Merek dan tipe</li>
+                    <li>Jenis kendaraan (mobil penumpang/truk)</li>
+                    <li>Tahun pembuatan</li>
+                    <li>Kilometer saat ini</li>
+                    <li>Status ketersediaan</li>
+                </ul>
+                <li>Klik <strong>"Simpan"</strong></li>
+            </ol>
+        </div>
+        <div class="info-box">
+            <p>Kendaraan baru akan muncul di daftar dan siap ditugaskan.</p>
+        </div>
+        <div class="slide-number">6 / 15</div>
+    </div>
+
+    <!-- Slide 7: Buat Permintaan (Karyawan) -->
+    <div class="slide">
+        <h2>Cara Membuat Permintaan (Karyawan)</h2>
+        <div class="step-box">
+            <ol>
+                <li>Klik menu <strong>"Permintaan"</strong></li>
+                <li>Klik tombol <strong>"+ Buat Permintaan"</strong></li>
+                <li>Isi formulir:</li>
+                <ul>
+                    <li><strong>Tujuan:</strong> Lokasi tujuan</li>
+                    <li><strong>Keperluan:</strong> Untuk apa kendaraan digunakan</li>
+                    <li><strong>Tanggal Mulai:</strong> Kapan membutuhkan kendaraan</li>
+                    <li><strong>Tanggal Selesai:</strong> Kapan mengembalikan</li>
+                    <li><strong>Waktu Mulai:</strong> Jam mulai perjalanan</li>
+                    <li><strong>Waktu Selesai:</strong> Jam perkiraan selesai</li>
+                </ul>
+                <li>Klik <strong>"Kirim Permintaan"</strong></li>
+            </ol>
+        </div>
+        <div class="slide-number">7 / 15</div>
+    </div>
+
+    <!-- Slide 8: Approve Manager -->
+    <div class="slide">
+        <h2>Cara Menyetuju Permintaan (Manager)</h2>
+        <div class="step-box">
+            <ol>
+                <li>Login sebagai <strong>Manager</strong></li>
+                <li>Lihat notifikasi permintaan baru</li>
+                <li>Klik menu <strong>"Permintaan"</strong></li>
+                <li>Pilih permintaan yang masuk</li>
+                <li>Klik tombol <strong>"Setuju"</strong> atau <strong>"Tolak"</strong></li>
+                <li>Jika setuju: Klik "Setuju" tanpa catatan tambahan</li>
+                <li>Jika tolak: Beri alasan penolakan</li>
+            </ol>
+        </div>
+        <div class="info-box">
+            <p>Setelah di-setuju manager, request masuk ke admin untuk penugasan kendaraan.</p>
+        </div>
+        <div class="slide-number">8 / 15</div>
+    </div>
+
+    <!-- Slide 9: Assign Driver & Kendaraan (Admin) -->
+    <div class="slide">
+        <h2>Cara Menugaskan Driver & Kendaraan (Admin)</h2>
+        <div class="step-box">
+            <ol>
+                <li>Login sebagai <strong>Admin</strong></li>
+                <li>Pergi ke menu <strong>"Permintaan"</strong></li>
+                <li>Cari request dengan status "Disetujui Manager"</li>
+                <li>Klik <strong>"Detail"</strong></li>
+                <li>Pilih <strong>kendaraan</strong> dari dropdown (yang tersedia)</li>
+                <li>Pilih <strong>driver</strong> dari dropdown</li>
+                <li>Tambah catatan jika perlu</li>
+                <li>Klik <strong>"Setuju & Tugaskan"</strong></li>
+            </ol>
+        </div>
+        <div class="slide-number">9 / 15</div>
+    </div>
+
+    <!-- Slide 10: Mulai Perjalanan (Driver) -->
+    <div class="slide">
+        <h2>Cara Memulai Perjalanan (Driver)</h2>
+        <div class="step-box">
+            <ol>
+                <li>Login sebagai <strong>Driver</strong></li>
+                <li>Lihat notifikasi penugasan baru</li>
+                <li>Klik menu <strong>"Permintaan"</strong></li>
+                <li>Cari trip yang ditugaskan</li>
+                <li>Klik <strong>"Mulai Perjalanan"</strong></li>
+                <li>Input <strong>Kilometer Awal</strong> (lihat di odometer kendaraan)</li>
+                <li>Klik <strong>"Mulai"</strong></li>
+            </ol>
+        </div>
+        <div class="info-box">
+            <p>Status berubah: <strong>Dalam Perjalanan</strong></p>
+        </div>
+        <div class="slide-number">10 / 15</div>
+    </div>
+
+    <!-- Slide 11: Selesai Perjalanan (Driver) -->
+    <div class="slide">
+        <h2>Cara Menyelesaikan Perjalanan (Driver)</h2>
+        <div class="step-box">
+            <ol>
+                <li>Setelah sampai di tujuan dan kembali ke base</li>
+                <li>Pergi ke menu <strong>"Permintaan"</strong></li>
+                <li>Cari trip yang sedang berlangsung</li>
+                <li>Klik <strong>"Selesai Perjalanan"</strong></li>
+                <li>Input <strong>Kilometer Akhir</strong> (lihat di odometer)</li>
+                <li>Tambah <strong>catatan</strong> jika ada masalah atau info penting</li>
+                <li>Klik <strong>"Selesai"</strong></li>
+            </ol>
+        </div>
+        <div class="info-box">
+            <p>Status menjadi <strong>Selesai</strong>. kendaraan kembali tersedia.</p>
+        </div>
+        <div class="slide-number">11 / 15</div>
+    </div>
+
+    <!-- Slide 12: Catat BBM -->
+    <div class="slide">
+        <h2>Cara Mencatat Penggunaan BBM</h2>
+        <div class="step-box">
+            <ol>
+                <li>Klik menu <strong>"BBM"</strong></li>
+                <li>Klik tombol <strong>"+ Tambah"</strong></li>
+                <li>Isi formulir:</li>
+                <ul>
+                    <li><strong>Pilih Kendaraan:</strong> Kendaraan yang diisi BBM</li>
+                    <li><strong>Tanggal:</strong> Tanggal pengisian</li>
+                    <li><strong>Jumlah Liter:</strong> Volume BBM yang diisi</li>
+                    <li><strong>Total Biaya:</strong> Harga total</li>
+                    <li><strong>Km Saat Ini:</strong> Kilometer kendaraan</li>
+                    <li><strong>Nota:</strong> Upload foto nota (opsional)</li>
+                </ul>
+                <li>Klik <strong>"Simpan"</strong></li>
+            </ol>
+        </div>
+        <div class="slide-number">12 / 15</div>
+    </div>
+
+    <!-- Slide 13: Lihat Laporan -->
+    <div class="slide">
+        <h2>Cara Melihat Laporan</h2>
+        <div class="step-box">
+            <ol>
+                <li>Login sebagai <strong>Admin</strong></li>
+                <li>Klik menu <strong>"Laporan"</strong></li>
+                <li>Pilih jenis laporan:</li>
+                <ul>
+                    <li><strong>Riwayat Perjalanan:</strong> Semua trip yang pernah dilakukan</li>
+                    <li><strong>Laporan BBM:</strong> Penggunaan bahan bakar</li>
+                </ul>
+                <li>Atur <strong>filter:</strong></li>
+                <ul>
+                    <li>Tanggal mulai - tanggal selesai</li>
+                    <li>Kendaraan tertentu</li>
+                    <li>Driver tertentu</li>
+                </ul>
+                <li>Klik <strong>"Tampilkan"</strong></li>
+                <li>Klik <strong>"Export PDF"</strong> untuk download</li>
+            </ol>
+        </div>
+        <div class="slide-number">13 / 15</div>
+    </div>
+
+    <!-- Slide 14: Kelola User -->
+    <div class="slide">
+        <h2>Cara Mengelola User (Admin)</h2>
+        <div class="step-box">
+            <ol>
+                <li>Klik menu <strong>"Pengguna"</strong></li>
+                <li>lihat daftar semua user</li>
+                <li><strong>Tambah User Baru:</strong></li>
+                <ul>
+                    <li>Klik "+ Tambah"</li>
+                    <li>Isi: Nama, Email, Role, Dept</li>
+                    <li>Password default: "password"</li>
+                </ul>
+                <li><strong>Edit User:</strong></li>
+                <ul>
+                    <li>Klik tombol edit</li>
+                    <li>Ubah data needed</li>
+                    <li>Simpan</li>
+                </ul>
+                <li><strong>Hapus User:</strong></li>
+                <ul>
+                    <li>Klik tombol hapus</li>
+                    <li>Konfirmasi</li>
+                </ul>
+            </ol>
+        </div>
+        <div class="slide-number">14 / 15</div>
+    </div>
+
+    <!-- Slide 15: Penutup -->
+    <div class="slide title-slide">
+        <h1>TERIMA KASIH</h1>
+        <p>Sekarang Anda siap menggunakan sistem!</p>
+        <div class="info-box" style="margin-top: 30px;">
+            <p><strong>Butuh Bantuan?</strong></p>
+            <p>Hubungi IT Support: support@perusahaan.com</p>
+            <p>Ext: 1234</p>
+        </div>
+        <div class="slide-number">15 / 15</div>
+    </div>
+
+    <div class="nav-buttons">
+        <button onclick="prevSlide()">&#8592; Sebelumnya</button>
+        <button onclick="nextSlide()">Berikutnya &#8594;</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        function nextSlide() { showSlide(currentSlide + 1); }
+        function prevSlide() { showSlide(currentSlide - 1); }
+        
+        document.addEventListener('keydown', function(e) {
+            if(e.key === 'ArrowRight') nextSlide();
+            if(e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+</body>
+</html>

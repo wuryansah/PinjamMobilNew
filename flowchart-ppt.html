@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowchart - Sistem Pinjam Mobil</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #0f0f23; color: #fff; }
+        .slide {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            padding: 40px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            page-break-after: always;
+            overflow-y: auto;
+        }
+        .slide.active { display: flex; flex-direction: column; }
+        h1 { font-size: 2.8em; text-align: center; margin-bottom: 10px; color: #00d4ff; }
+        h2 { font-size: 2em; text-align: center; margin-bottom: 30px; color: #ffd700; }
+        h3 { font-size: 1.4em; color: #00d4ff; margin-bottom: 20px; }
+        .slide-number { position: fixed; bottom: 20px; right: 30px; font-size: 1.2em; opacity: 0.6; }
+        .title-slide { display: none; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; }
+        .title-slide.active { display: flex; }
+        
+        .nav-buttons { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; gap: 10px; }
+        .nav-buttons button { padding: 10px 20px; font-size: 16px; cursor: pointer; background: #00d4ff; border: none; border-radius: 5px; color: #0f0f23; font-weight: bold; }
+        
+        .flowchart { display: flex; flex-direction: column; align-items: center; gap: 0; margin: 20px 0; }
+        .flow-node {
+            padding: 15px 30px; border-radius: 8px; text-align: center; font-weight: bold; min-width: 280px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid #00d4ff;
+        }
+        .flow-node.start { background: #e74c3c; border-color: #e74c3c; } /* Red */
+        .flow-node.end { background: #27ae60; border-color: #27ae60; } /* Green */
+        .flow-node.process { background: #3498db; border-color: #3498db; } /* Blue */
+        .flow-node.decision { background: #f39c12; border-color: #f39c12; transform: rotate(0deg); } /* Orange */
+        .flow-node.user { background: #9b59b6; border-color: #9b59b6; } /* Purple */
+        .flow-node.approval { background: #1abc9c; border-color: #1abc9c; } /* Teal */
+        
+        .arrow-down { font-size: 28px; color: #fff; line-height: 1; }
+        .arrow-branch { display: flex; align-items: center; gap: 60px; }
+        .arrow-right { font-size: 20px; color: #fff; }
+        
+        .connector-line { width: 2px; height: 20px; background: #fff; }
+        
+        .status-flow { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; justify-content: center; margin: 20px 0; }
+        .status-box { padding: 15px 25px; border-radius: 25px; font-weight: bold; border: 2px solid; }
+        .status-pending { background: #f39c12; border-color: #f39c12; }
+        .status-manager { background: #3498db; border-color: #3498db; }
+        .status-admin { background: #9b59b6; border-color: #9b59b6; }
+        .status-progress { background: #e67e22; border-color: #e67e22; }
+        .status-completed { background: #27ae60; border-color: #27ae60; }
+        .status-rejected { background: #e74c3c; border-color: #e74c3c; }
+        
+        .arrow-h { font-size: 30px; color: #fff; }
+        
+        .role-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .role-table th, .role-table td { border: 2px solid #00d4ff; padding: 15px; text-align: left; }
+        .role-table th { background: #00d4ff; color: #0f0f23; }
+        .role-table td { background: rgba(255,255,255,0.1); }
+        
+        .step-list { list-style: none; margin: 10px 0; }
+        .step-list li { padding: 12px 20px; margin: 8px 0; background: rgba(255,255,255,0.1); border-radius: 8px; border-left: 4px solid #00d4ff; }
+        
+        .two-col { display: flex; gap: 40px; justify-content: center; margin-top: 20px; }
+        .col-box { flex: 1; max-width: 500px; }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide active title-slide">
+        <h1>FLOWCHART</h1>
+        <h2>SISTEM PINJAM MOBIL</h2>
+        <p style="font-size: 1.5em; opacity: 0.8;">Diagram Alur Proses Peminjaman Kendaraan</p>
+        <p style="margin-top: 50px; opacity: 0.6;">Tekan panah keyboard untuk navigasi</p>
+        <div class="slide-number">1 / 7</div>
+    </div>
+
+    <!-- Slide 2: Main Process Flowchart -->
+    <div class="slide">
+        <h2> flowchart Utama - Proses Pinjam Mobil</h2>
+        <div class="flowchart">
+            <div class="flow-node user">KARYAWAN Membuat Permintaan</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node approval">Status: PENDING (Menunggu)</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node user">MANAGER Meninjau & Menyetuju</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node approval">Status: MANAGER APPROVED</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node user">ADMIN Menugaskan Kendaraan & Driver</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node approval">Status: ADMIN APPROVED</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node start">DRIVER Memulai Perjalanan (Start KM)</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node approval">Status: IN PROGRESS (Berlangsung)</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node end">DRIVER Menyelesaikan (End KM)</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node end">Status: COMPLETED (Selesai)</div>
+        </div>
+        <div class="slide-number">2 / 7</div>
+    </div>
+
+    <!-- Slide 3: Decision Points -->
+    <div class="slide">
+        <h2>Flowchart dengan Titik Keputusan</h2>
+        <div class="flowchart">
+            <div class="flow-node user">Karyawan Submit Request</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node approval">Status: PENDING</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node decision">MANAGER Approve?</div>
+            
+            <div class="arrow-branch">
+                <div class="flow-col" style="display:flex;flex-direction:column;align-items:center;">
+                    <span class="arrow-right">&#10004; YA</span>
+                    <div class="connector-line" style="width:2px;height:20px;"></div>
+                    <div class="flow-node approval">MANAGER APPROVED</div>
+                </div>
+                <div class="flow-col" style="display:flex;flex-direction:column;align-items:center;">
+                    <span class="arrow-right" style="color:#e74c3c;">&#10008; TIDAK</span>
+                    <div class="connector-line" style="width:2px;height:20px;"></div>
+                    <div class="flow-node end">MANAGER REJECTED</div>
+                </div>
+            </div>
+            
+            <div class="arrow-down" style="margin-top:20px;">&#9660;</div>
+            <div class="flow-node decision">ADMIN Assign?</div>
+            
+            <div class="arrow-branch">
+                <div class="flow-col" style="display:flex;flex-direction:column;align-items:center;">
+                    <span class="arrow-right">&#10004; YA</span>
+                    <div class="connector-line" style="width:2px;height:20px;"></div>
+                    <div class="flow-node">ADMIN APPROVED + Assign Vehicle</div>
+                </div>
+                <div class="flow-col" style="display:flex;flex-direction:column;align-items:center;">
+                    <span class="arrow-right" style="color:#e74c3c;">&#10008; TIDAK</span>
+                    <div class="connector-line" style="width:2px;height:20px;"></div>
+                    <div class="flow-node end">ADMIN REJECTED</div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">3 / 7</div>
+    </div>
+
+    <!-- Slide 4: Status Flow Diagram -->
+    <div class="slide">
+        <h2>Diagram Alur Status Permintaan</h2>
+        <div class="status-flow">
+            <div class="status-box status-pending">PENDING</div>
+            <div class="arrow-h">&#10145;</div>
+            <div class="status-box status-manager">MANAGER_APPROVED</div>
+            <div class="arrow-h">&#10145;</div>
+            <div class="status-box status-admin">ADMIN_APPROVED</div>
+            <div class="arrow-h">&#10145;</div>
+            <div class="status-box status-progress">IN_PROGRESS</div>
+            <div class="arrow-h">&#10145;</div>
+            <div class="status-box status-completed">COMPLETED</div>
+        </div>
+        
+        <h3 style="margin-top:40px;">Status Tambahan (penolakan)</h3>
+        <div class="status-flow">
+            <div class="status-box status-rejected">MANAGER_REJECTED</div>
+            <div style="width:30px;"></div>
+            <div class="status-box status-rejected">ADMIN_REJECTED</div>
+            <div style="width:30px;"></div>
+            <div class="status-box status-rejected">DRIVER_CANCELLED</div>
+        </div>
+        
+        <h3 style="margin-top:40px;">Catatan:</h3>
+        <ul class="step-list">
+            <li>Jika Manager adalah peminta (borrower), status langsung menjadi MANAGER APPROVED (tanpa persetujuan manager)</li>
+            <li>Saat ADMIN APPROVED, kendaraan otomatisuba h status menjadi "in_use"</li>
+            <li>Saat COMPLETED, kendaraan kembali menjadi "available"</li>
+        </ul>
+        <div class="slide-number">4 / 7</div>
+    </div>
+
+    <!-- Slide 5: Driver Start Trip Flow -->
+    <div class="slide">
+        <h2>Flowchart: Memulai Perjalanan (Driver)</h2>
+        <div class="flowchart">
+            <div class="flow-node user">Driver Login Sistem</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node process">Tampilkan Trip Ditugaskan</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node user">Klik Tombol "Mulai Perjalanan"</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node process">Form Input: Start KM</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node process">Simpan UsageRecord (start_km, start_time)</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node approval">Update Status: IN_PROGRESS</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node approval">Update Vehicle: availability = "in_use"</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node process">Kirim Notifikasi ke Peminjam</div>
+        </div>
+        <div class="slide-number">5 / 7</div>
+    </div>
+
+    <!-- Slide 6: Driver End Trip Flow -->
+    <div class="slide">
+        <h2>Flowchart: Menyelesaikan Perjalanan (Driver)</h2>
+        <div class="flowchart">
+            <div class="flow-node user">Driver Login - Trip IN_PROGRESS</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node user">Klik Tombol "Selesai Perjalanan"</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node process">Form Input: End KM + Notes</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node process">Update UsageRecord (end_km, end_time)</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node approval">Update Vehicle: availability = "available"</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node approval">Update Vehicle: current_kilometer = end_km</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node approval">Update Status: COMPLETED</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node process">Kirim Notifikasi ke Peminjam</div>
+            <div class="arrow-down">&#9660;</div>
+            <div class="flow-node end">Tripm Selesai!</div>
+        </div>
+        <div class="slide-number">6 / 7</div>
+    </div>
+
+    <!-- Slide 7: Role Summary -->
+    <div class="slide">
+        <h2>Ringkasan Role & Fitur</h2>
+        <table class="role-table">
+            <tr>
+                <th>Role</th>
+                <th>Aksi dalam Flowchart</th>
+                <th>Hasil/Output</th>
+            </tr>
+            <tr>
+                <td><strong>KARYAWAN</strong></td>
+                <td>Buat permintaan (destination, purpose, datetime)</td>
+                <td>Request berstatus PENDING</td>
+            </tr>
+            <tr>
+                <td><strong>MANAGER</strong></td>
+                <td>Review & Approve/Tolak request</td>
+                <td>Status: MANAGER_APPROVED/REJECTED</td>
+            </tr>
+            <tr>
+                <td><strong>ADMIN</strong></td>
+                <td>Assign vehicle + driver atau Tolak</td>
+                <td>Status: ADMIN_APPROVED + vehicle assignment</td>
+            </tr>
+            <tr>
+                <td><strong>DRIVER</strong></td>
+                <td>Mulai/selesai perjalanan, catat KM</td>
+                <td>UsageRecord tersimpan, status COMPLETED</td>
+            </tr>
+        </table>
+        
+        <h3 style="margin-top:30px;">Catatan Penting:</h3>
+        <ul class="step-list">
+            <li>Notifikasi otomatis dikirim ke step berikutnya dalam flow</li>
+            <li>Vehicle availability berubah otomatis (available/in_use)</li>
+            <li>UsageRecord menyimpan data KM untuk laporan</li>
+        </ul>
+        <div class="slide-number">7 / 7</div>
+    </div>
+
+    <div class="nav-buttons">
+        <button onclick="prevSlide()">&#8592; Prev</button>
+        <button onclick="nextSlide()">Next &#8594;</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        function nextSlide() { showSlide(currentSlide + 1); }
+        function prevSlide() { showSlide(currentSlide - 1); }
+        
+        document.addEventListener('keydown', function(e) {
+            if(e.key === 'ArrowRight') nextSlide();
+            if(e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedural - Sistem Pinjam Mobil</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #1a1a2e; color: #333; }
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            padding: 40px 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            page-break-after: always;
+        }
+        .slide.active { display: flex; flex-direction: column; justify-content: center; }
+        .slide h1 { font-size: 3em; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .slide h2 { font-size: 2em; margin-bottom: 30px; color: #ffd700; }
+        .slide p { font-size: 1.4em; line-height: 1.8; margin-bottom: 15px; }
+        .slide ul { font-size: 1.3em; line-height: 2; margin-left: 40px; }
+        .slide li { margin-bottom: 15px; }
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 1.2em;
+            opacity: 0.7;
+        }
+        .title-slide { text-align: center; }
+        .title-slide h1 { font-size: 4em; }
+        .title-slide p { font-size: 1.5em; opacity: 0.9; }
+        .nav-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: flex;
+            gap: 10px;
+        }
+        .nav-buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #ffd700;
+            border: none;
+            border-radius: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+        .info-box {
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-left: 5px solid #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide active title-slide">
+        <h1>PROSEDUR SISTEM</h1>
+        <h2>PINJAM MOBIL</h2>
+        <p>Aplikasi manajemen peminjaman kendaraan perusahaan</p>
+        <p style="margin-top: 40px; opacity: 0.8;">Presented by Developer Team</p>
+        <div class="slide-number">1 / 12</div>
+    </div>
+
+    <!-- Slide 2: Gambaran Sistem -->
+    <div class="slide">
+        <h2>Gambaran Umum Sistem</h2>
+        <div class="info-box">
+            <p><strong>Sistem Pinjam Mobil</strong> adalah aplikasi berbasis web untuk mengelola peminjaman kendaraan perusahaan.</p>
+        </div>
+        <ul>
+            <li>Pengelolaan data kendaraan (armada)</li>
+            <li>Penerimaan dan persetujuan permintaan mobil</li>
+            <li>Penugasan.driver dan kendaraan</li>
+            <li>Pelacakan penggunaan (start KM, end KM)</li>
+            <li>Monitor bahan bakar dan laporan</li>
+        </ul>
+        <div class="slide-number">2 / 12</div>
+    </div>
+
+    <!-- Slide 3: Jenis Pengguna -->
+    <div class="slide">
+        <h2>Jenis Pengguna Sistem</h2>
+        <div class="info-box">
+            <ul>
+                <li><strong>ADMIN</strong> - Kelola kendaraan, driver, pengguna, approve/request, generate laporan</li>
+                <li><strong>MANAGER</strong> - Approve permintaan kendaraan dari bawahannya</li>
+                <li><strong>DRIVER</strong> - Mengemudikan kendaraan, mulai/selesaikan perjalanan</li>
+                <li><strong>KARYAWAN</strong> - Membuat permintaan peminjaman kendaraan</li>
+            </ul>
+        </div>
+        <div class="slide-number">3 / 12</div>
+    </div>
+
+    <!-- Slide 4: Login -->
+    <div class="slide">
+        <h2>Langkah 1: Login Sistem</h2>
+        <ul>
+            <li>Buka halaman login sistem</li>
+            <li>Masukkan email dan password</li>
+            <li>Klik tombol "Login"</li>
+            <li>Setiap user memiliki kredensial sendiri sesuai role</li>
+        </ul>
+        <div class="info-box">
+            <p><strong>Catatan:</strong> Password default adalah "password" untuk user baru. Admin harus mengganti setelah login pertama.</p>
+        </div>
+        <div class="slide-number">4 / 12</div>
+    </div>
+
+    <!-- Slide 5: Membuat Permintaan -->
+    <div class="slide">
+        <h2>Langkah 2: Membuat Permintaan (Karyawan)</h2>
+        <ul>
+            <li>Klik menu "Permintaan" atau "Requests"</li>
+            <li>Klik tombol "+ Buat Permintaan Baru"</li>
+            <li>Isi formulir:</li>
+            <ul>
+                <li>Tujuan (destination)</li>
+                <li>Keperluan (purpose)</li>
+                <li>Tanggal/waktu mulai</li>
+                <li>Tanggal/waktu selesai</li>
+            </ul>
+            <li>Klik "Simpan" atau "Submit"</li>
+        </ul>
+        <div class="info-box">
+            <p>Status akan menjadi "Pending" menunggu persetujuan manager.</p>
+        </div>
+        <div class="slide-number">5 / 12</div>
+    </div>
+
+    <!-- Slide 6: Persetujuan Manager -->
+    <div class="slide">
+        <h2>Langkah 3: Persetujuan Manager</h2>
+        <ul>
+            <li>Manager menerima notifikasi permintaan baru</li>
+            <li>Buka menu "Permintaan"</li>
+            <li>Lihat detail permintaan karyawan</li>
+            <li>Pilih action:</li>
+            <ul>
+                <li><strong>SETUJU</strong> - Kirim ke admin untuk penugasan kendaraan</li>
+                <li><strong>TOLAK</strong> - Berikan alasan penolakan</li>
+            </ul>
+            <li>Klik tombol proses</li>
+        </ul>
+        <div class="info-box">
+            <p>Jika user adalah Manager, status langsung menjadi "Manager Approved".</p>
+        </div>
+        <div class="slide-number">6 / 12</div>
+    </div>
+
+    <!-- Slide 7: Penugasaan Admin -->
+    <div class="slide">
+        <h2>Langkah 4: Penugasaan Admin</h2>
+        <ul>
+            <li>Admin menerima notifikasi request yang sudah di-approve manager</li>
+            <li>Buka detail permintaan</li>
+            <li>Pilih kendaraan yang tersedia</li>
+            <li>Pilih driver yang akan bertugas</li>
+            <li>Tambah catatan jika diperlukan</li>
+            <li>Klik "Setuju & Tugaskan"</li>
+        </ul>
+        <div class="info-box">
+            <p><strong>Alternatif:</strong> Admin bisa menolak dengan klik "Tolak" dan berikan alasan.</p>
+        </div>
+        <div class="slide-number">7 / 12</div>
+    </div>
+
+    <!-- Slide 8: Memulai Perjalanan -->
+    <div class="slide">
+        <h2>Langkah 5: Memulai Perjalanan (Driver)</h2>
+        <ul>
+            <li>Driver menerima notifikasi penugasan</li>
+            <li>Buka menu "Permintaan"</li>
+            <li>Cari trip yang ditugaskan</li>
+            <li>Klik "Mulai Perjalanan"</li>
+            <li>Input kilometer awal (start KM)</li>
+            <li>Klik "Simpan"</li>
+        </ul>
+        <div class="info-box">
+            <p>Status berubah menjadi "In Progress" (sedang berlangsung).</p>
+        </div>
+        <div class="slide-number">8 / 12</div>
+    </div>
+
+    <!-- Slide 9: Menyelesaikan Perjalanan -->
+    <div class="slide">
+        <h2>Langkah 6: Menyelesaikan Perjalanan (Driver)</h2>
+        <ul>
+            <li>Setelah sampai tujuan</li>
+            <li>Klik "Selesai Perjalanan"</li>
+            <li>Input:</li>
+            <ul>
+                <li>Kilometer akhir (end KM)</li>
+                <li>Catatan perjalanan</li>
+            </ul>
+            <li>Klik "Simpan"</li>
+            <li>Kendaraan kembali tersedia</li>
+        </ul>
+        <div class="info-box">
+            <p>Status menjadi "Completed" dan datausage tercatat untuk laporan.</p>
+        </div>
+        <div class="slide-number">9 / 12</div>
+    </div>
+
+    <!-- Slide 10: Pencatatan BBM -->
+    <div class="slide">
+        <h2>Langkah 7: Pencatatan Bahan Bakar</h2>
+        <ul>
+            <li>Akses menu "BBM" atau "Fuel"</li>
+            <li>Klik "+ Tambah Catatan BBM"</li>
+            <li>Isi formulir:</li>
+            <ul>
+                <li>Pilih kendaraan</li>
+                <li>Tanggal pengisisan</li>
+                <li>Jumlah liter</li>
+                <li>Total biaya</li>
+                <li>Upload bukti nota (opsional)</li>
+            </ul>
+            <li>Klik "Simpan"</li>
+        </ul>
+        <div class="info-box">
+            <p>Driver dan Admin dapat mencatat penggunaan BBM.</p>
+        </div>
+        <div class="slide-number">10 / 12</div>
+    </div>
+
+    <!-- Slide 11: Laporan -->
+    <div class="slide">
+        <h2>Langkah 8: Generate Laporan</h2>
+        <ul>
+            <li>Akses menu "Laporan" atau "Reports"</li>
+            <li>Pilih jenis laporan:</li>
+            <ul>
+                <li>Laporan Riwayat Perjalanan</li>
+                <li>Laporan Penggunaan BBM</li>
+            </ul>
+            <li>Filter berdasarkan:</li>
+            <ul>
+                <li>Tanggal</li>
+                <li>Kendaraan</li>
+                <li>Driver</li>
+            </ul>
+            <li>Klik "Generate" atau "Export PDF"</li>
+        </ul>
+        <div class="info-box">
+            <p>Laporan dapat di-export ke format PDF untuk dokumentasi.</p>
+        </div>
+        <div class="slide-number">11 / 12</div>
+    </div>
+
+    <!-- Slide 12: Penutup -->
+    <div class="slide title-slide">
+        <h1>TERIMA KASIH</h1>
+        <p>Semoga prosedur ini membantu dalam penggunaan sistem</p>
+        <div class="info-box" style="margin-top: 30px;">
+            <p><strong>Hubungi IT Support</strong> jika mengalami kesulitan</p>
+            <p>Email: support@perusahaan.com</p>
+            <p>Ext: 1234</p>
+        </div>
+        <div class="slide-number">12 / 12</div>
+    </div>
+
+    <div class="nav-buttons">
+        <button onclick="prevSlide()">&#8592; Sebelumnya</button>
+        <button onclick="nextSlide()">Berikutnya &#8594;</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        function nextSlide() { showSlide(currentSlide + 1); }
+        function prevSlide() { showSlide(currentSlide - 1); }
+        
+        document.addEventListener('keydown', function(e) {
+            if(e.key === 'ArrowRight') nextSlide();
+            if(e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+</body>
+</html>
